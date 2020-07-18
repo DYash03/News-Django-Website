@@ -1,0 +1,39 @@
+{% extends 'news_app/base.html'%}
+{% block title %}Aryavarta Times - Live tv{% endblock %}
+{% block tvactive %}active dsntnav{% endblock tvactive %}
+{%block body %}
+{% load static %}
+<div class="bg-danger p-3">
+    <div class="container">
+        <h5 class="text-center text-light">Live TV</h5>
+    </div>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        {% if count == 0 %}
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+                <h2 class="text-center">Aryavarta Times</h2>
+                <h6 class="text-center">Its not your fault its us.</h6>
+                <p>It seeme that the live broadcast is temporarily halted. Hence no channel is active at this instant.
+                    We will notify you as soon as the broadcast resumes.
+                </p>
+                <p>Check out our video section for the time being.</p>
+            </div>
+        </div>
+        {%else%}
+        {% for i in tv%}
+        <div class="col-md-12">
+            <h5 class="font-weight-bold bg-danger p-4">{{i.channel_name}}</h5>
+            {{i.channel_embed|safe}}
+            <br>
+            <br>
+            <br>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <br>
+</div>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'news_app/base.html'%}
+{% block title %}{{weather.slug}}{% endblock %}
+{% block wthractive %}active dsnwnav{% endblock wthractive %}
+{%block body %}
+{% load static %}
+<div id="6488ca9daeb1575820faf037189ce032" class="ww-informers-box-854753">
+    <p class="ww-informers-box-854754"><a href="https://world-weather.info/forecast/india/new_delhi/">New Delhi -
+            weather forecast</a><br><a
+            href="https://world-weather.info/forecast/usa/detroit/">https://world-weather.info/forecast/usa/detroit/</a>
+    </p>
+</div>
+<script type="text/javascript" charset="utf-8"
+    src="https://world-weather.info/wwinformer.php?userid=6488ca9daeb1575820faf037189ce032"></script>
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-8 blog-main">
+            <div class="blog-post">
+                <h3 class="blog-post-title  brdbtm pb-4 font-weight-bold">{{weather.title}}</h3>
+                <p class="ntextdsn2">{{weather.title_desc}}</p>
+                <p class="ntextdsn1">Aryavarta Times | {{weather.datetime}}</p>
+                <img class="img-fluid" src="/media/{{weather.image}}" alt="...">
+                <br>
+                <p>{{weather.description|safe}}</p>
+            </div>
+            <br>
+            <div class="sharethis-inline-share-buttons"></div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="shdgstyle">
+                <h5>Related Stories</h5>
+            </div>
+            <hr />
+            {% for i in related %}
+            <div class="mb-4 col-md-12">
+                <a href="{% url 'news_app:weather_about' i.slug %}">
+                    <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+
+                    <p class="carousel-caption d-sm-block text-light font-weight-bold">{{i.title}}</p>
+                </a>
+            </div>
+            {% endfor %}
+
+        </div>
+
+        <aside class=" col-md-4 blog-sidebar">
+            <div class="p-4 mb-4 bg-light rounded">
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h3>Top Stories</h3>
+                        <br>
+                        {% for i in top reversed %}
+                        <a href="{% url 'news_app:news_about' i.slug %}">
+                            <h6 class="font-weight-bold text-danger">{{i.title}}</h6>
+                            <p class="ntextdsn1">{{i.datetime}}</p>
+                        </a>
+                        <br>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+</div>
+{% endblock%}

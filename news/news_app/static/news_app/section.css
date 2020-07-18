@@ -1,0 +1,66 @@
+.hdgstyle {
+      border-left: 4px solid red;
+    }
+
+
+    .hdgstyle h5 {
+      margin-left: 10px;
+    }
+
+    .shdgstyle {
+      border-left: 4px solid blue;
+    }
+
+
+    .shdgstyle h5 {
+      margin-left: 10px;
+    }
+
+    .breakingdsn {
+      border: 1px solid #777;
+      background-color: white;
+      padding: 0;
+    }
+
+    .deco {
+      padding: 15px;
+      background-color: rgb(247, 71, 71);
+    }
+
+    .sdeco {
+      padding: 15px;
+      background-color: deepskyblue;
+    }
+
+    .deco1 {
+      padding-left: 2em;
+      padding-right: 2em;
+    }
+
+    .ntextdsn1 {
+      color: #777;
+      font-weight: bold;
+    }
+
+    .ntextdsn2 {
+      font-size: 1.2em;
+      font-weight: 400;
+      font-style: italic;
+      color: grey;
+    }
+
+    .brdshare {
+      border-top: 4px solid grey;
+    }
+
+    .brdbtm {
+      border-bottom: 4px solid grey;
+    }
+
+    .bgclrsearch {
+      background-color: deepskyblue;
+    }
+
+     .bkgndclr {
+      background-color: rgba(0, 0, 0, 0.8);
+    }

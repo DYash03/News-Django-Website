@@ -1,0 +1,87 @@
+{% extends 'news_app/base.html'%}
+{% block title %}Aryavarta Times - Sports News{% endblock %}
+{% block sprtactive %} active dsnsnav{% endblock sprtactive %}
+{%block body %}
+{% load static %}
+<nav class="navbar navbar-expand-lg newsnav bg-primary navbar-dark">
+    <h6 class="navbar-brand text-light mr-3">Sports</h6>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupported"
+        aria-controls="navbarSupported" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupported">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:sport_list'%}">All</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:sports_category' 'Cricket' %}">Cricket</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:sports_category' 'Football' %}">Football</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:sports_category' 'Hockey' %}">Hockey</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:sports_category' 'Kabaddi' %}">Kabaddi</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:sports_category' 'Basketball' %}">Basketball</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:sports_category' 'Others' %}">Others</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br>
+<div class="container">
+    <div class="shdgstyle">
+        <h5 class="font-weight-bold">{{category}} News</h5>
+    </div>
+    <hr />
+    <div class="row">
+        {% for i in news1 reversed %}
+        <div class="col-lg-6 mb-3">
+            <div>
+                <a href="{% url 'news_app:sports_about' i.slug %}">
+                    <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+
+
+            </div>
+            <div class="carousel-caption d-sm-block text-light font-weight-bold">
+                <p>{{i.title}}</p>
+            </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<br>
+<br>
+<div class="container">
+    <div class="shdgstyle">
+        <h5>More</h5>
+    </div>
+    <hr />
+    <div class="row">
+        {% for i in news2%}
+        <div class="col-md-4 mb-4">
+            <a href="{% url 'news_app:sports_about' i.slug %}">
+                <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+            </a>
+        </div>
+        <div class="col-md-8 mb-4">
+            <a href="{% url 'news_app:news_about' i.slug %}">
+                <p class="font-weight-bold ntextdsn2 text-dark">{{i.title}}</p>
+                <p class="ntextdsn2 text-dark  d-none d-lg-block">{{i.title_desc}}</p>
+                <p class="ntextdsn1">{{i.datetime}}</p>
+            </a>
+        </div>
+        <hr>
+        {%endfor%}
+    </div>
+</div>
+{%endblock%}

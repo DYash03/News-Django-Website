@@ -1,0 +1,93 @@
+{% extends 'news_app/base.html'%} {% block title %}Aryavarta Times - Search tab
+{% endblock %}
+{% block newsactive %}active dsnnnav{% endblock newsactive %}
+{%block body %}
+{% load static %}
+{% load class_name %}
+<div class="bg-primary">
+    <div class="container">
+        <form class='navbar-form pt-3 pb-3' method="get" action="/search">
+            <div class='input-group'>
+                <input class='form-control' type='search' name='search' id='search' placeholder='Search' />
+                <span class="input-group-btn">
+                    <button class="btn btn-dark" type="submit">
+                        Search
+                    </button>
+                </span>
+            </div>
+        </form>
+    </div>
+    <div class="bgclrsearch p-3">
+        <div class="container">
+            <h5>Search Results:</h5>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div class="container">
+    {% if query|length < 1 %}
+    <div>
+        <p>Your search<b> - {{search}} - </b>did not match any documents.</p>
+        Suggestions:
+        <ul>
+            <li>Make sure that all words are spelled correctly.</li>
+            <li>Try different keywords.</li>
+            <li>Try more general keywords.</li>
+        </ul>
+    </div>
+    {% endif %}
+</div>
+<div class="container">
+    <div class="row">
+        {% for i in query reversed %}
+        {% with i|class_name as klass %}
+        {% if klass == 'New' %}
+        <div class="col-md-4 mb-4">
+            <a href="{% url 'news_app:news_about' i.slug %}">
+                <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+            </a>
+        </div>
+        <div class="col-md-8 mb-4">
+            <a href="{% url 'news_app:news_about' i.slug %}">
+                <p class="font-weight-bold ntextdsn2 text-dark">{{i.title}}</p>
+                <p class="text-dark  d-none d-lg-block">{{i.title_desc}}</p>
+                <p class="ntextdsn1">{{i.datetime}}</p>
+            </a>
+        </div>
+        {% elif klass == 'Sport' %}
+        <div class="col-md-4 mb-4">
+            <a href="{% url 'news_app:sports_about' i.slug %}">
+                <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+            </a>
+        </div>
+        <div class="col-md-8 mb-4">
+            <a href="{% url 'news_app:sports_about' i.slug %}">
+                <p class="font-weight-bold ntextdsn2 text-dark">{{i.title}}</p>
+                <p class="text-dark  d-none d-lg-block">{{i.title_desc}}</p>
+                <p class="ntextdsn1">{{i.datetime}}</p>
+            </a>
+        </div>
+        {% elif klass == 'Weather' %}
+        <div class="col-md-4 mb-4">
+            <a href="{% url 'news_app:weather_about' i.slug %}">
+                <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+            </a>
+        </div>
+        <div class="col-md-8 mb-4">
+            <a href="{% url 'news_app:weather_about' i.slug %}">
+                <p class="font-weight-bold ntextdsn2 text-dark">{{i.title}}</p>
+                <p class="text-dark  d-none d-lg-block">{{i.title_desc}}</p>
+                <p class="ntextdsn1">{{i.datetime}}</p>
+            </a>
+        </div>
+        {% endif %}
+        {% endwith %}
+        {%endfor%}
+    </div>
+</div>
+<br>
+<br>
+</div>
+
+{% endblock %}

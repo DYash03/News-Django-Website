@@ -1,0 +1,14 @@
+footer {
+      background-color: rgba(0, 0, 0, 0.9);
+      padding-top: 2rem;
+    }
+
+    footer a {
+      color: rgba(255, 255, 255, 0.4);
+      display: block;
+    }
+
+    footer p {
+      color: rgba(255, 255, 255, 0.4);
+      display: block;
+    }

@@ -1,0 +1,104 @@
+{% extends 'news_app/base.html'%} {% block title %}{{news.slug}}{% endblock %}
+{% block newsactive %}active dsnnnav{% endblock newsactive %}
+{%block body %}
+{% load static %}
+<nav class="navbar navbar-expand-lg newsnav bg-danger navbar-dark">
+    <h6 class="navbar-brand text-light mr-3">News</h6>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupported"
+        aria-controls="navbarSupported" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupported">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:home'%}">All</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:news_category' 'India' %}">India</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:news_category' 'World' %}">World</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:news_category' 'Election' %}">Election</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:news_category' 'Business' %}">Business</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:news_category' 'Tech' %}">Tech</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:news_category' 'Science' %}">Science</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:news_category' 'Health' %}">Health</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:news_category' 'Entertainment & Arts' %}">Entertainment &
+                    Arts</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-8 blog-main">
+            <p class="pb-4 brdbtm ntextdsn1 ">
+                News » {{news.Type}} » {{news.category}}
+            </p>
+
+            <div class="blog-post">
+                <h3 class="blog-post-title font-weight-bold">{{news.title}}</h3>
+                <p class="ntextdsn2">{{news.title_desc}}</p>
+                <p class="ntextdsn1">Aryavarta Times | {{news.datetime}}</p>
+                <img class="img-fluid" src="/media/{{news.image}}" alt="...">
+                <br>
+                <p>{{news.description|safe}}</p>
+            </div>
+            <br>
+            <div class="sharethis-inline-share-buttons"></div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="hdgstyle">
+                <h5>Related Stories</h5>
+            </div>
+            <hr />
+            {% for i in related %}
+            <div class="mb-4 col-md-12">
+                <a href="{% url 'news_app:news_about' i.slug %}">
+                    <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+
+                    <p class="carousel-caption d-sm-block text-light font-weight-bold">{{i.title}}</p>
+                </a>
+            </div>
+            {% endfor %}
+
+        </div>
+
+        <aside class=" col-md-4 blog-sidebar">
+            <div class="p-4 mb-4 bg-light rounded">
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h3>Top Stories</h3>
+                        <br>
+                        {% for i in top reversed %}
+                        <a href="{% url 'news_app:news_about' i.slug %}">
+                            <h6 class="font-weight-bold text-danger">{{i.title}}</h6>
+                            <p class="ntextdsn1">{{i.datetime}}</p>
+                        </a>
+                        <br>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+</div>
+{% endblock%}

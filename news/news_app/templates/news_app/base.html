@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="description"
+    content="Breaking news, sport, TV, Weather and a whole lot more. The Aryavarta Times informs, educates and entertains - wherever you are, whatever your age." />
+  <meta name="keywords" content="Aryavarta, Times, Latest, News, Sports, Weather, Live, TV, Videos" />
+  <meta name="author" content="Yash Dixit" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" />
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'news_app/header.css'%}">
+  <link rel="stylesheet" href="{% static 'news_app/weather_plugin.css'%}">
+  <link rel="stylesheet" href="{% static 'news_app/section.css'%}">
+  <link rel="stylesheet" href="{% static 'news_app/footer.css'%}">
+  <script type="text/javascript"
+    src="https://platform-api.sharethis.com/js/sharethis.js#property=5f119d866925780012922b35&product=inline-share-buttons"
+    async="async"></script>
+  <title>{% block title %}{% endblock title %}</title>
+  <link rel="icon" href="{% static 'news_app/Logo.png'%}" type="image/x-icon">
+</head>
+
+<body class="bg-light">
+  <nav class="navbar navbar-expand-lg nvadesign navbar-dark">
+    <h6 class="navbar-brand text-light mr-3">Aryavarta</h6>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link {% block newsactive %}{% endblock newsactive %}" href="{% url 'news_app:home'%}">News</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% block sprtactive %}{% endblock sprtactive %}"
+            href="{% url 'news_app:sport_list'%}">Sport</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% block wthractive %}{% endblock wthractive %}"
+            href="{% url 'news_app:weather'%}">Weather</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% block vdoactive %}{% endblock vdoactive %}" href="{% url 'news_app:videos'%}">Videos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {% block tvactive %}{% endblock tvactive %}" href="{% url 'news_app:tv'%}">TV</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0" method="get" action="/search">
+        <input class="form-control mr-sm-2" type="search" name="search" id="search" placeholder="Search"
+          aria-label="Search" />
+        <button class="btn btn-success my-2 my-sm-0" type="submit">
+          Search
+        </button>
+      </form>
+    </div>
+  </nav>
+  {% block body %}{% endblock%}
+  <br>
+  <br>
+  <br>
+  <footer id="footrclr">
+    <div class="container-fluid padding">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <h6 class="text-light">ARYAVARTA TIMES</h6>
+            <a href="{% url 'news_app:home'%}">News</a>
+            <a href="{% url 'news_app:sport_list'%}">Sports</a>
+            <a href="{% url 'news_app:weather'%}">Weather</a>
+            <a href="{% url 'news_app:videos'%}">Video</a>
+            <a href="{% url 'news_app:tv'%}">TV</a>
+            <a href="{% url 'news_app:Contact'%}">Contact us</a>
+          </div>
+
+          <div class="col-md-3">
+            <h6 class="text-light">NEWS</h6>
+            <a href="{% url 'news_app:news_category' 'India' %}">India</a>
+            <a href="{% url 'news_app:news_category' 'World' %}">World</a>
+            <a href="{% url 'news_app:news_category' 'Election' %}">Election</a>
+            <a href="{% url 'news_app:news_category' 'Business' %}">Business</a>
+            <a href="{% url 'news_app:news_category' 'Tech' %}">Tech</a>
+            <a href="{% url 'news_app:news_category' 'Science' %}">Science</a>
+            <a href="{% url 'news_app:news_category' 'Health' %}">Health</a>
+            <a href="{% url 'news_app:news_category' 'Entertainment & Arts' %}">Entertainment & Arts</a>
+          </div>
+          <div class="col-md-3">
+            <h6 class="text-light">SPORTS</h6>
+            <a href="{% url 'news_app:sports_category' 'Cricket' %}">Cricket</a>
+            <a href="{% url 'news_app:sports_category' 'Football' %}">Football</a>
+            <a href="{% url 'news_app:sports_category' 'Hockey' %}">Hockey</a>
+            <a href="{% url 'news_app:sports_category' 'Kabaddi' %}">Kabaddi</a>
+            <a href="{% url 'news_app:sports_category' 'Basketball' %}">Basketball</a>
+            <a href="{% url 'news_app:sports_category' 'Others' %}">Others</a>
+          </div>
+          <div class="col-md-3">
+            <p class="dimclr">All rights of this website is reserved to Yash Dixit. It is created from
+              sources
+              available at different
+              platforms.
+              However we do not promote any particular page or channel.</p>
+            <h5 class="text-light m-0">&copy;Aryavarta</h5>
+          </div>
+        </div>
+        <br>
+        <br>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+  <div id="fb-root"></div>
+  <script src="{% static 'news_app/contact.js'%}"></script>
+</body>
+
+</html>

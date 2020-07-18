@@ -1,0 +1,249 @@
+{% extends 'news_app/base.html'%} {% block title %}Aryavarta Times - Latest news anytime, anywhere{% endblock %}
+{% block newsactive %}active dsnnnav{% endblock newsactive %}
+{%block body %}
+{% load static %}
+
+<nav class="navbar navbar-expand-lg newsnav bg-danger navbar-dark">
+  <h6 class="navbar-brand text-light mr-3">News</h6>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupported"
+    aria-controls="navbarSupported" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupported">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'news_app:home'%}">All</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'news_app:news_category' 'India' %}">India</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'news_app:news_category' 'World' %}">World</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'news_app:news_category' 'Election' %}">Election</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'news_app:news_category' 'Business' %}">Business</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'news_app:news_category' 'Tech' %}">Tech</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'news_app:news_category' 'Science' %}">Science</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'news_app:news_category' 'Health' %}">Health</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'news_app:news_category' 'Entertainment & Arts' %}">Entertainment & Arts</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<br />
+<div class="container">
+  <h4 class="font-weight-bold">Welcome to Aryavarta Times</h4>
+  <iframe src="https://ourworldindata.org/grapher/total-cases-covid-19?tab=map" width="100%" height="600px"></iframe>
+
+  <br />
+  <br />
+  <br />
+
+  <div class="breakingdsn container">
+    <div>
+      <div>
+        <h4 class="deco text-center">Breaking news</h4>
+      </div>
+      <marquee behavior="" direction="up" scrolldelay="300">
+        {% for i in breaking reversed%}
+        <div class="deco1">
+          <a class="text-danger" href="{% url 'news_app:news_about' i.slug %}">{{i.title}}</a>
+          <br>
+
+        </div>
+        <hr>
+        {% endfor%}
+      </marquee>
+    </div>
+  </div>
+  <br>
+  <br>
+
+  <div class="hdgstyle">
+    <h5>India</h5>
+  </div>
+  <hr />
+  <div class="row">
+    {% for i in india reversed %}
+    <div class="col-lg-6 mb-3">
+      <div>
+        <a href="{% url 'news_app:news_about' i.slug %}">
+          <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+
+      </div>
+      <div class="carousel-caption d-sm-block text-light font-weight-bold">
+        <p>{{i.title}}</p>
+      </div>
+      </a>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
+<br />
+<br />
+
+<div class="container">
+  <div class="hdgstyle">
+    <h5>World</h5>
+  </div>
+  <hr />
+  <div class="row">
+    {% for i in world reversed %}
+    <div class="col-lg-6 mb-3">
+      <div>
+        <a href="{% url 'news_app:news_about' i.slug %}">
+          <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+
+      </div>
+      <div class="carousel-caption d-sm-block text-light font-weight-bold">
+        <p>{{i.title}}</p>
+      </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<br />
+<br />
+<div class="container">
+  <div class="hdgstyle">
+    <h5>Election</h5>
+  </div>
+  <hr />
+  <div class="row text-center">
+    {% for i in election reversed%}
+    <div class="col-lg-3 col-md-6">
+      <a href="{% url 'news_app:news_about' i.slug %}">
+        <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+        <div class="text-muted">
+          <p class=" text-justified font-weight-bold">{{i.title}}</p>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+<br>
+<br>
+
+
+<div class="container">
+  <div class="hdgstyle">
+    <h5>Business</h5>
+  </div>
+  <hr />
+  <div class="row text-center">
+    {% for i in business reversed%}
+    <div class="col-lg-3 col-md-6">
+      <a href="{% url 'news_app:news_about' i.slug %}">
+        <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+        <div class="text-muted">
+          <p class="text-justified font-weight-bold">{{i.title}}</p>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+<br>
+<br>
+
+<div class="container">
+  <div class="hdgstyle">
+    <h5>Technology</h5>
+  </div>
+  <hr />
+  <div class="row text-center">
+    {% for i in tech reversed%}
+    <div class="col-lg-3 col-md-6">
+      <a href="{% url 'news_app:news_about' i.slug %}">
+        <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+        <div class="text-muted">
+          <p class="text-justified font-weight-bold">{{i.title}}</p>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+<br>
+<br>
+
+<div class="container">
+  <div class="hdgstyle">
+    <h5>Science</h5>
+  </div>
+  <hr />
+  <div class="row text-center">
+    {% for i in science reversed%}
+    <div class="col-lg-3 col-md-6">
+      <a href="{% url 'news_app:news_about' i.slug %}">
+        <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+        <div class="text-muted">
+          <p class="text-justified font-weight-bold">{{i.title}}</p>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+<br>
+<br>
+
+<div class="container">
+  <div class="hdgstyle">
+    <h5>Health</h5>
+  </div>
+  <hr />
+  <div class="row text-center">
+    {% for i in health reversed%}
+    <div class="col-lg-3 col-md-6">
+      <a href="{% url 'news_app:news_about' i.slug %}">
+        <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+        <div class="text-muted">
+          <p class="text-justified font-weight-bold">{{i.title}}</p>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+<br>
+<br>
+<div class="container">
+  <div class="hdgstyle">
+    <h5>Entertainment & Arts</h5>
+  </div>
+  <hr />
+  <div class="row text-center">
+    {% for i in env reversed%}
+    <div class="col-lg-3 col-md-6">
+      <a href="{% url 'news_app:news_about' i.slug %}">
+        <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+        <div class="text-muted">
+          <p class="text-justified font-weight-bold">{{i.title}}</p>
+        </div>
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

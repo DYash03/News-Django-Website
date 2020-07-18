@@ -1,0 +1,43 @@
+.nvadesign {
+    background-color: black;
+    }
+
+.nvadesign li:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+    }
+
+.nvadesign li {
+    padding-right: 1em;
+    padding-left: 1em;
+    border-left: 2px solid #777;
+    }
+
+.newsnav li:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+    }
+
+.newsnav li {
+    padding-right: 1em;
+    padding-left: 1em;
+    border-left: 1px solid #777777;
+    }
+
+.dsnnnav {
+    border-bottom: 4px solid crimson;
+    }
+
+.dsnsnav {
+    border-bottom: 4px solid blue;
+    }
+
+.dsnwnav {
+    border-bottom: 4px solid deepskyblue;
+    }
+
+.dsnvnav {
+    border-bottom: 4px solid maroon;
+    }
+
+.dsntnav {
+    border-bottom: 4px solid red;
+    }

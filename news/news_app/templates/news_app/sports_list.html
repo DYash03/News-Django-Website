@@ -1,0 +1,218 @@
+{% extends 'news_app/base.html'%} {% block title %}Aryavarta Times - Sports News{% endblock %}
+{% block sprtactive %} active dsnsnav{% endblock sprtactive %}
+{%block body %}
+{% load static %}
+
+<nav class="navbar navbar-expand-lg newsnav bg-primary navbar-dark">
+    <h6 class="navbar-brand text-light mr-3">Sports</h6>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupported"
+        aria-controls="navbarSupported" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupported">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:sport_list'%}">All</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:sports_category' 'Cricket' %}">Cricket</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:sports_category' 'Football' %}">Football</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:sports_category' 'Hockey' %}">Hockey</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:sports_category' 'Kabaddi' %}">Kabaddi</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:sports_category' 'Basketball' %}">Basketball</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:sports_category' 'Others' %}">Others</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<br />
+<div class="container">
+    <div class="shdgstyle">
+        <h5>Just now</h5>
+    </div>
+    <hr />
+    <div class="row">
+        {% for i in just reversed %}
+        <div class="col-lg-6 mb-3">
+            <div>
+                <a href="{% url 'news_app:sports_about' i.slug %}">
+                    <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+
+            </div>
+            <div class="carousel-caption d-sm-block text-light font-weight-bold">
+                <p>{{i.title}}</p>
+            </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<br />
+<br />
+
+<div class="container">
+
+    <div class="breakingdsn container">
+        <div>
+            <div>
+                <h4 class=" sdeco text-center">Breaking news</h4>
+            </div>
+            <marquee behavior="" direction="up" scrolldelay="300">
+                {% for i in breaking reversed%}
+                <div class="deco1">
+                    <a class="text-primary" href="{% url 'news_app:sports_about' i.slug %}">{{i.title}}</a>
+                    <br>
+
+                </div>
+                <hr>
+                {% endfor%}
+            </marquee>
+        </div>
+    </div>
+    <br>
+    <br>
+
+    <div class="shdgstyle">
+        <h5>Cricket</h5>
+    </div>
+    <hr />
+    <div class="row">
+        {% for i in cricket reversed %}
+        <div class="col-lg-6 mb-3">
+            <div>
+                <a href="{% url 'news_app:sports_about' i.slug %}">
+                    <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+
+            </div>
+            <div class="carousel-caption d-sm-block text-light font-weight-bold">
+                <p>{{i.title}}</p>
+            </div>
+            </a>
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+<br />
+<br />
+
+<div class="container">
+    <div class="shdgstyle">
+        <h5>Football</h5>
+    </div>
+    <hr />
+    <div class="row">
+        {% for i in football reversed %}
+        <div class="col-lg-6 mb-3">
+            <div>
+                <a href="{% url 'news_app:sports_about' i.slug %}">
+                    <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+
+            </div>
+            <div class="carousel-caption d-sm-block text-light font-weight-bold">
+                <p>{{i.title}}</p>
+            </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<br />
+<br />
+<div class="container">
+    <div class="shdgstyle">
+        <h5>Hockey</h5>
+    </div>
+    <hr />
+    <div class="row text-center">
+        {% for i in hockey reversed%}
+        <div class="col-lg-3 col-md-6">
+            <a href="{% url 'news_app:sports_about' i.slug %}">
+                <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+                <div class="text-muted">
+                    <p class="text-justified font-weight-bold">{{i.title}}</p>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+<br>
+<br>
+
+
+<div class="container">
+    <div class="shdgstyle">
+        <h5>Kabaddi</h5>
+    </div>
+    <hr />
+    <div class="row text-center">
+        {% for i in kabaddi reversed%}
+        <div class="col-lg-3 col-md-6">
+            <a href="{% url 'news_app:sports_about' i.slug %}">
+                <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+                <div class="text-muted">
+                    <p class="text-justified font-weight-bold">{{i.title}}</p>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+<br>
+<br>
+
+<div class="container">
+    <div class="shdgstyle">
+        <h5>Basketball</h5>
+    </div>
+    <hr />
+    <div class="row text-center">
+        {% for i in basketball reversed%}
+        <div class="col-lg-3 col-md-6">
+            <a href="{% url 'news_app:sports_about' i.slug %}">
+                <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+                <div class="text-muted">
+                    <p class="text-justified font-weight-bold">{{i.title}}</p>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+<br>
+<br>
+
+<div class="container">
+    <div class="shdgstyle">
+        <h5>Others</h5>
+    </div>
+    <hr />
+    <div class="row text-center">
+        {% for i in others reversed%}
+        <div class="col-lg-3 col-md-6">
+            <a href="{% url 'news_app:sports_about' i.slug %}">
+                <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+                <div class="text-muted">
+                    <p class="text-justified font-weight-bold">{{i.title}}</p>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

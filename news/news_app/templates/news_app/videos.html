@@ -1,0 +1,68 @@
+{% extends 'news_app/base.html'%}
+{% block title %}Aryavarta Times - Online Videos{% endblock %}
+{% block vdoactive %}active dsnvnav{% endblock vdoactive %}
+{%block body %}
+{% load static %}
+<div class="bg-danger p-3">
+    <div class="container">
+        <h5 class="font-weight-bold text-light text-center">Aryavarta Times - Online Videos</h5>
+    </div>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <br>
+            <div class="row">
+                {% for i in video reversed %}
+                <div class="col-md-6">
+                    <div>
+                        <video width="100%" height="100%" controls>
+                            <source src="/media/{{i.video}}" type="video/mp4">Your browser does not support the video
+                            tag.
+                        </video>
+                        <h6>{{i.video_name}}</h6>
+                        <h6 class="ntextdsn1">{{i.datetime}}</h6>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="p-4 mb-4 bg-light rounded">
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h3>News</h3>
+                        <br>
+                        {% for i in news reversed %}
+                        <a href="{% url 'news_app:news_about' i.slug %}">
+                            <h6 class="font-weight-bold text-danger">{{i.title}}</h6>
+                            <p class="ntextdsn1">{{i.datetime}}</p>
+                        </a>
+                        <br>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+            <div class="p-4 mb-4 bg-light rounded">
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h3>Sports</h3>
+                        <br>
+                        {% for i in sport reversed %}
+                        <a href="{% url 'news_app:sports_about' i.slug %}">
+                            <h6 class="font-weight-bold text-primary">{{i.title}}</h6>
+                            <p class="ntextdsn1">{{i.datetime}}</p>
+                        </a>
+                        <br>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

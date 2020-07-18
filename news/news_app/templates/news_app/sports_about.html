@@ -1,0 +1,112 @@
+{% extends 'news_app/base.html'%} {% block title %}{{news.slug}}{% endblock %}
+{% block sprtactive %} active dsnsnav{% endblock sprtactive %}
+{%block body %}
+{% load static %}
+<nav class="navbar navbar-expand-lg newsnav bg-primary navbar-dark">
+    <h6 class="navbar-brand text-light mr-3">Sports</h6>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupported"
+        aria-controls="navbarSupported" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupported">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:sport_list'%}">All</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:sports_category' 'Cricket' %}">Cricket</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:sports_category' 'Football' %}">Football</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:sports_category' 'Hockey' %}">Hockey</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:sports_category' 'Kabaddi' %}">Kabaddi</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:sports_category' 'Basketball' %}">Basketball</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'news_app:sports_category' 'Others' %}">Others</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-8 blog-main">
+            <p class="pb-4 brdbtm ntextdsn1 ">
+                Sports » {{news.Type}} » {{news.category}}
+            </p>
+
+            <div class="blog-post">
+                <h3 class="blog-post-title font-weight-bold">{{news.title}}</h3>
+                <p class="ntextdsn2">{{news.title_desc}}</p>
+                <p class="ntextdsn1">Aryavarta Times | {{news.datetime}}</p>
+                <img class="img-fluid" src="/media/{{news.image}}" alt="...">
+                <br>
+                <p>{{news.description|safe}}</p>
+            </div>
+            {% if news.PointsTable1_embed is null%}{%else%}
+            <br>
+            <br>
+            <div>
+                {{news.PointsTable1_embed|safe}}
+            </div>
+            {%endif%}
+            {% if news.PointsTable2_embed is null%}{%else%}
+            <br>
+            <br>
+            <div>
+                {{news.PointsTable2_embed|safe}}
+                <br>
+            </div>
+            {%endif%}
+            <br>
+            <div class="sharethis-inline-share-buttons"></div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <div class="shdgstyle">
+                <h5>Related Stories</h5>
+            </div>
+            <hr />
+            {% for i in related %}
+            <div class="mb-4 col-md-12">
+                <a href="{% url 'news_app:sports_about' i.slug %}">
+                    <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+
+                    <p class="carousel-caption d-sm-block text-light font-weight-bold">{{i.title}}</p>
+                </a>
+            </div>
+            {% endfor %}
+
+        </div>
+
+        <aside class=" col-md-4 blog-sidebar">
+            <div class="p-4 mb-4 bg-light rounded">
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
+                        <h3>Top Stories</h3>
+                        <br>
+                        {% for i in top reversed %}
+                        <a href="{% url 'news_app:sports_about' i.slug %}">
+                            <h6 class="font-weight-bold">{{i.title}}</h6>
+                            <p class="ntextdsn1">{{i.datetime}}</p>
+                        </a>
+                        <br>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+</div>
+{% endblock%}

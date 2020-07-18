@@ -1,0 +1,111 @@
+{% extends 'news_app/base.html'%}
+{% block title %}Aryavarta Times - Weather report{% endblock %}
+{% block wthractive %}active dsnwnav{% endblock wthractive %}
+{%block body %}
+{% load static %}
+<div id="6488ca9daeb1575820faf037189ce032" class="ww-informers-box-854753">
+    <p class="ww-informers-box-854754"><a href="https://world-weather.info/forecast/india/new_delhi/">New Delhi -
+            weather forecast</a><br><a
+            href="https://world-weather.info/forecast/usa/detroit/">https://world-weather.info/forecast/usa/detroit/</a>
+    </p>
+</div>
+<script type="text/javascript" charset="utf-8"
+    src="https://world-weather.info/wwinformer.php?userid=6488ca9daeb1575820faf037189ce032"></script>
+
+<div class="container-fluid bg-primary">
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <h5 class="ntextdsn1 text-light">Weather: Mumbai (India)</h5>
+                <div id="70ea380595c3759cac8f2d6caa2102ad" class="ww-informers-box-854753">
+                    <p class="ww-informers-box-854754"><a
+                            href="https://world-weather.info/forecast/india/mumbai/">Detailed
+                            forecast</a><br><a
+                            href="https://world-weather.info/forecast/usa/chicago/">https://world-weather.info/forecast/usa/chicago/</a>
+                    </p>
+                </div>
+                <script type="text/javascript" charset="utf-8"
+                    src="https://world-weather.info/wwinformer.php?userid=70ea380595c3759cac8f2d6caa2102ad"></script>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h5 class="ntextdsn1 text-light">Weather: Kolkata (India)</h5>
+                <div id="db68372e4daab96d0d14f299a2cb9393" class="ww-informers-box-854753">
+                    <p class="ww-informers-box-854754"><a href="https://world-weather.info/forecast/india/kolkata/">New
+                            York City -
+                            weather</a><br><a href="https://world-weather.info/">world-weather.info</a></p>
+                </div>
+                <script type="text/javascript" charset="utf-8"
+                    src="https://world-weather.info/wwinformer.php?userid=db68372e4daab96d0d14f299a2cb9393"></script>
+            </div>
+            <div class="col-md-4 mb-4">
+                <h5 class="ntextdsn1 text-light">Weather: Bangalore (India)</h5>
+                <div id="7f7597da12e5e3e7b131a9b5d23c1a94" class="ww-informers-box-854753">
+                    <p class="ww-informers-box-854754"><a
+                            href="https://world-weather.info/forecast/india/bangalor/month/">For a
+                            month</a><br><a
+                            href="https://world-weather.info/forecast/usa/austin_1/">https://world-weather.info/forecast/usa/austin_1/</a>
+                    </p>
+                </div>
+                <script type="text/javascript" charset="utf-8"
+                    src="https://world-weather.info/wwinformer.php?userid=7f7597da12e5e3e7b131a9b5d23c1a94"></script>
+            </div>
+
+        </div>
+    </div>
+    <br>
+    <br>
+</div>
+
+<div class="container-fluid jumbotron">
+    <div class="container">
+        <div class="shdgstyle">
+            <h5>Weather Updates</h5>
+        </div>
+        <hr />
+        <div class="row">
+            {% for i in weather1 reversed %}
+            <div class="col-lg-4 mb-3">
+                <div>
+                    <a href="{% url 'news_app:weather_about' i.slug %}">
+                        <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+
+                </div>
+                <div class="carousel-caption d-sm-block text-light font-weight-bold">
+                    <p>{{i.title}}</p>
+                </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="shdgstyle">
+        <h5>More</h5>
+    </div>
+    <hr />
+    <div class="row">
+        {% for i in weather2%}
+        <div class="col-md-4 mb-4">
+            <a href="{% url 'news_app:weather_about' i.slug %}">
+                <img class="img-fluid" src="/media/{{i.image}}" alt="...">
+            </a>
+        </div>
+        <div class="col-md-8 mb-4">
+            <a href="{% url 'news_app:weather_about' i.slug %}">
+                <p class="font-weight-bold ntextdsn2 text-dark">{{i.title}}</p>
+                <p class="ntextdsn2 text-dark  d-none d-lg-block">{{i.title_desc}}</p>
+                <p class="ntextdsn1">{{i.datetime}}</p>
+            </a>
+        </div>
+        {%endfor%}
+        <br>
+        <br>
+    </div>
+</div>
+{%endblock%}
